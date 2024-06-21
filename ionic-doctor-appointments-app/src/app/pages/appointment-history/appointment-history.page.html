@@ -1,0 +1,22 @@
+<ion-content>
+    <div lines="none" class="header">
+        <img src="https://github.com/haperezv/myDoctor/blob/main/src/assets/iconoMyDoc.png?raw=true">
+    </div>
+
+    <div class="sub-title">
+        <strong slot="start">Seleccione Doctor</strong>
+    </div>    
+    <ion-list>
+      <ion-item *ngFor="let appointment of appointments">
+        <ion-label>
+          <h2>{{ appointment.date }} - {{ appointment.time }}</h2>
+          <p>Especialización: {{ appointment.specialization }}</p>
+          <p>Doctor: {{ appointment.doctor }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    
+    <div class="ion-text-center btn-time-appointment">
+        <ion-button expand="full" color="primary" (click)="goHome()">Salir</ion-button>
+    </div>
+</ion-content>

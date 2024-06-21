@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+
+.selected {
+    background-color: #d4d4d4; /* Color de fondo para el ítem seleccionado */
+}
+  
+
+
+.ion-text-center.btn-time-appointment {
+    margin-top: 20px;
+}
+
+.sub-title {
+    padding: 16px;
+    strong {
+        font-size: 18px;
+        line-height: 36px;
+    }
+}
+
+ion-datetime {
+    width: 100%;
+    --ion-background-color: var(--ion-color-light);
+    --ion-text-color: var(--ion-color-dark);
+}
+
+.btn-time-appointment {
+    ion-button {
+        --border-radius: 25px;
+        height: 50px;
+        font-size: 15px;
+        margin: 25px;
+    }
+
+    .appointment {
+        text-transform: capitalize;
+    }
+}

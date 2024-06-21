@@ -1,0 +1,46 @@
+<ion-content>
+  <div lines="none" class="header">
+    <img src="https://github.com/haperezv/myDoctor/blob/main/src/assets/iconoMyDoc.png?raw=true">
+  </div>
+  
+  <div class="sub-title">
+    <strong slot="start">Seleccione Doctor</strong>
+  </div>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="selectedDoctor">
+      <ion-item *ngFor="let doctor of doctors">
+        <ion-label>{{ doctor.name }}</ion-label>
+        <ion-radio slot="start" [value]="doctor"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <div class="sub-title">
+    <strong slot="start">Seleccione Fecha</strong>
+  </div>
+  <ion-item lines="none">
+    <ion-datetime 
+      display-format="MM DD, YYYY" 
+      [(ngModel)]="selectedDate" 
+      placeholder="Seleccione Fecha">
+    </ion-datetime>
+  </ion-item>
+  
+  <div class="sub-title">
+    <strong slot="start">Seleccione Hora</strong>
+  </div>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="selectedTime">
+      <ion-item *ngFor="let time of availableTimes">
+        <ion-label>{{ time }}</ion-label>
+        <ion-radio slot="start" [value]="time"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <div class="ion-text-center btn-time-appointment">
+    <ion-button expand="full" (click)="confirmAppointment()">Confirmar Cita</ion-button>
+    <ion-button expand="full" color="danger" (click)="close()">Cancelar</ion-button>
+  </div>
+</ion-content>
+  

@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+ion-item h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+  
+ion-item p {
+    margin: 0;
+}
+  
+ion-button {
+    margin-top: 20px;
+}
+
+.ion-text-center.btn-time-appointment {
+    margin-top: 20px;
+}
+
+.sub-title {
+    padding: 16px;
+    strong {
+        font-size: 18px;
+        line-height: 36px;
+    }
+}
+
+.btn-time-appointment {
+    ion-button {
+        --border-radius: 25px;
+        height: 50px;
+        font-size: 15px;
+        margin: 25px;
+    }
+
+    .appointment {
+        text-transform: capitalize;
+    }
+}
