@@ -1,3 +1,4 @@
+// src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -13,6 +14,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { DoctorService } from './services/doctor/doctor.service';
+import { AppointmentService } from './services/doctor/appointment.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +30,8 @@ import { DoctorService } from './services/doctor/doctor.service';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    DoctorService
+    DoctorService,
+    AppointmentService
   ],
   bootstrap: [AppComponent]
 })

@@ -10,9 +10,6 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Importar el modelo Doctor
-const Doctor = require('./models/doctor');
-
 // Conectar a MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
@@ -27,15 +24,13 @@ mongoose.connection.on('error', (err) => {
   console.error('Error connecting to MongoDB:', err);
 });
 
-// Ruta para obtener todos los doctores
-app.get('/api/doctors', async (req, res) => {
-  try {
-    const doctors = await Doctor.find();
-    res.json(doctors);
-  } catch (err) {
-    res.status(500).send('Server error');
-  }
-});
+// Importar rutas
+const doctorsRouter = require('./routes/doctors');
+const appointmentsRouter = require('./routes/appointments');
+
+// Usar rutas
+app.use('/api/doctors', doctorsRouter);
+app.use('/api/appointments', appointmentsRouter);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

@@ -1,5 +1,7 @@
+// src/app/pages/record/record.page.ts
 import { Component, OnInit } from '@angular/core';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+import { AppointmentService } from '../../services/doctor/appointment.service';
 
 @Component({
   selector: 'app-record',
@@ -8,37 +10,23 @@ import { NavController, ModalController } from '@ionic/angular';
 })
 export class RecordPage implements OnInit {
 
-  appointments = [
-    {
-      date: '2024-06-10',
-      time: '09:00 AM',
-      specialization: 'Cardiología',
-      doctor: 'Dr. John Doe'
-    },
-    {
-      date: '2024-06-12',
-      time: '10:00 AM',
-      specialization: 'Neurología',
-      doctor: 'Dr. Jane Smith'
-    },
-    {
-      date: '2024-06-15',
-      time: '11:00 AM',
-      specialization: 'Dermatología',
-      doctor: 'Dr. Alan C. Braverman'
-    }
-  ];
+  appointments: any[] = [];
 
   constructor(
     private navCtrl: NavController,
-    private modalController: ModalController
+    private appointmentService: AppointmentService
   ) { }
 
   ngOnInit() {
+    this.loadAppointments();
   }
 
-  close(){
-    this.modalController.dismiss();
+  async loadAppointments() {
+    try {
+      this.appointments = await this.appointmentService.getAppointments().toPromise();
+    } catch (error) {
+      console.error('Error cargando citas:', error);
+    }
   }
 
   goHome() {
